@@ -4,10 +4,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import jobRoutes from './routes/jobs.js';
 
-require('dotenv').config();
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 app.use(cors())
 app.use(express.json());
