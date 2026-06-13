@@ -1,14 +1,17 @@
-import './App.css'
+import { Routes, Route } from 'react-router';
+import Dashboard from './pages/Dashboard'
+import AddJob from './pages/AddJob'
+import EditJob from './pages/EditJob'
 
 function App() {
 
 
   return (
-    <>
-      <div className="bg-blue-500 text-white p-8">
-        <h1 className="text-3xl font-bold">AppFlow works!</h1>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/add" element={<AddJob />} />
+      <Route path="/edit/:id" element={<EditJob />} />
+    </Routes>
   )
 }
 
