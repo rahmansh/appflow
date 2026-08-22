@@ -48,6 +48,16 @@ hook on the schema, or explicitly in the controller before calling
 `.create()`. Either works; a pre-save hook is less error-prone because
 you can't forget to call it.
 
+> **Mongoose version gotcha (hit in this repo, Mongoose 9.6.3):** older
+> Mongoose docs/tutorials show `pre('save', function (next) { ...;
+> next(); })`. As of Mongoose 9, pre hooks no longer receive a callable
+> `next` — middleware is async/await-based instead. Passing a `next`
+> parameter and calling it will throw `next is not a function`. Write it
+> as `pre('save', async function () { ...; })` and just `return` (no
+> `next()` call) instead. If you hit this error, check your installed
+> Mongoose major version before assuming the code is wrong — the API
+> shape genuinely changed.
+
 **Template checklist for any project:**
 - [ ] Unique constraint on the login identifier (email or username)
 - [ ] Password field never returned in API responses (`select: false` in
